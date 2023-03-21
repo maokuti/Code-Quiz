@@ -23,6 +23,7 @@ var questionsTitle = document.querySelector('#question-title');
 var questionsContainer = document.querySelector('#questions-container');
 var choicesContainer = document.querySelector('#choices-container');
 var timerContainer = document.querySelector('#timer')
+var timerContainerText = document.getElementById('time');
 var finalScoreContainer = document.querySelector('#final-score')
 var initialInput = document.querySelector('#initials');
 
@@ -72,7 +73,7 @@ startButton.addEventListener('click', function() {
     counter = 100;
     timer = setInterval(function() {
         counter--;
-        timerContainer.textContent = counter;
+        timerContainerText.textContent = counter;
         if (counter <= 0) {
             // endGame()
             clearInterval(timer);
