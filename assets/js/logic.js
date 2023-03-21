@@ -40,6 +40,11 @@ function populateQuestion(question) {
 function endGame() {
     // When the game ends, it should display their score and give the user the ability to save their initials and their score
 
+    clearInterval(timer);
+    questionsContainer.setAttribute('class', 'hide');
+    endScreenElement.setAttribute('class', 'visible');
+    finalScore.textContent = score;
+    
     // hide questions container
     // show endScreen container
     // assign score to finalScore container
