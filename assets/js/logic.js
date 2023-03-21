@@ -28,6 +28,7 @@ var finalScoreContainer = document.querySelector('#final-score')
 var initialInput = document.querySelector('#initials');
 
 
+
 function populateQuestion(questions) {
     var currentQuestion = questions.title;
     var choices = questions.choices;
@@ -75,7 +76,7 @@ startButton.addEventListener('click', function() {
         counter--;
         timerContainerText.textContent = counter;
         if (counter <= 0) {
-            // endGame()
+            endGame()
             clearInterval(timer);
         }
     }, 1000);
@@ -103,10 +104,16 @@ choicesContainer.addEventListener('click', function(event){
     //        if correct, add 1 to score, call nextQuestion()
     if(selectedAnswer === questions[currentQuestion].answer){
         score += 1;
+        // play correct audio
+        var correctSound = new Audio('assets/sfx/correct.wav');
+        correctSound.play();
         nextQuestion();
     //        if wrong, remove 10 seconds from the interval, call nextQuestion()
     }else{
         counter -= 10;
+        // play incorrect audio
+        var incorrectSound = new Audio('assets/sfx/incorrect.wav');
+        incorrectSound.play()
         nextQuestion();
     }
 })
