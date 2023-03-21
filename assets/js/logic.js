@@ -26,21 +26,19 @@ var finalScoreContainer = document.querySelector('#final-score')
 var initialInput = document.querySelector('#initials');
 
 
-
-
 function populateQuestion(question) {
-    var question = question.title;
+    var currentQuestion = question.title;
     var choices = question.choices;
 
     choicesContainer.innerHTML = '';
-    // questionTitle.textContent = question;
+    questionsTitle.textContent = currentQuestion;
     var choicesList = document.createElement('ul');
     for (let i = 0; i < choices.length; i++) {
         var choice = document.createElement('li');
         choice.textContent = choices[i];
         choicesList.appendChild(choice);
     }
-    // choicesContainer.appendChild(choicesList)
+    choicesContainer.appendChild(choicesList)
 }
 
 function endGame() {
@@ -50,11 +48,7 @@ function endGame() {
     questionsContainer.setAttribute('class', 'hide');
     endScreenElement.setAttribute('class', 'visible');
     finalScore.textContent = score;
-
-    // hide questions container
-    // show endScreen container
-    // assign score to finalScore container
-    // reset the timer clearInterval(timer);
+    
 }
 
 function nextQuestion() {
