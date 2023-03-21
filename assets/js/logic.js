@@ -48,7 +48,7 @@ function endGame() {
     questionsContainer.setAttribute('class', 'hide');
     endScreenElement.setAttribute('class', 'visible');
     finalScore.textContent = score;
-    
+
 }
 
 function nextQuestion() {
@@ -71,7 +71,7 @@ startButton.addEventListener('click', function() {
     counter = 100;
     timer = setInterval(function() {
         counter--;
-        // set timerContainer text to counter
+        timerContainer.textContent = counter;
         if (counter <= 0) {
             // endGame()
             clearInterval(timer);
@@ -88,6 +88,18 @@ function saveHighscore(initial) {
 }
 
 // Another click event listener for choices
+
+choicesContainer.addEventListener('click', function(event){            //click to select an answer, if answer if correct add one point if incorrect, timer goes down by 5 seconds
+    var selectedAnswer = event.target.textContent;
+    if(selectedAnswer === questions[currentQuestion].answer){
+        score += 1;
+        nextQuestion();
+    }else{
+        counter -= 10;
+        nextQuestion();
+    }
+})
+
 //    Check answer
 //        if correct, add 1 to score, call nextQuestion()
 //        if wrong, remove 10 seconds from the interval, call nextQuestion()
