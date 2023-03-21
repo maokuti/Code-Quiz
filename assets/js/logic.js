@@ -15,12 +15,18 @@ var timer;
 
 // Prepare all selector that we might need to point to the html element
 var startButton = document.querySelector('#start');
-// startScreenElement
-// questionsContainer
-// questionsTitle
-// choicesContainer
-// timerContainer
-// ....
+var submitButton = document.querySelector('#submit');
+var startScreenElement = document.querySelector('#start-screen');
+var endScreenElement = document.querySelector('#end-screen');
+var questionsTitle = document.querySelector('#question-title');
+var questionsContainer = document.querySelector('#questions-container');
+var choicesContainer = document.querySelector('#choices-container');
+var timerContainer = document.querySelector('#timer')
+var finalScoreContainer = document.querySelector('#final-score')
+var initialInput = document.querySelector('#initials');
+
+
+
 
 function populateQuestion(question) {
     var question = question.title;
@@ -44,7 +50,7 @@ function endGame() {
     questionsContainer.setAttribute('class', 'hide');
     endScreenElement.setAttribute('class', 'visible');
     finalScore.textContent = score;
-    
+
     // hide questions container
     // show endScreen container
     // assign score to finalScore container
