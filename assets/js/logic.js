@@ -82,11 +82,17 @@ startButton.addEventListener('click', function() {
 });
 
 function saveHighscore(initial) {
-    // get the current highscores value from localstorage
-    // json parse current highscores from localstorage, this will be an array of object
-    // push initial + score to the array
-    // order the array from highest score to lowest
-    // json stringify then save back to localstorage
+    var topScore = [{Initial:initial,Score:score}];
+    if(localStorage.getItem('highscores') === null)
+    {
+        localStorage.setItem('highscores', JSON.stringify(topScore)); 
+    }
+    else{
+        var retrieveHighscores = JSON.parse(localStorage.getItem('highscores'));
+        retrieveHighscores.push({Initial:initial,Score:score});
+        var sortedData = retrieveHighscores.sort(function(a,b){return b.Score-a.Score});
+        localStorage.setItem('highscores', JSON.stringify(sortedData));
+    }
 }
 
 // Another click event listener for choices
@@ -107,6 +113,8 @@ choicesContainer.addEventListener('click', function(event){
 
 
 // Click event listener to submit button
-//    var initial = initialInput.value.trim()
-//    saveHighscore(initial)
-//    redirect to highscore page
+submitButton.addEventListener('click', function(){
+    var initial = initialInput.value.trim();
+    saveHighscore(initial);
+    location.replace('highscores.html');
+})
