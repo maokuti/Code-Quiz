@@ -49,7 +49,7 @@ function endGame() {
     clearInterval(timer);
     questionsContainer.setAttribute('class', 'hide');
     endScreenElement.setAttribute('class', 'visible');
-    finalScore.textContent = score;
+    finalScoreContainer.textContent = score;
 
 }
 
