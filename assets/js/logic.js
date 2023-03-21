@@ -8,6 +8,7 @@
 
 // Prepare the questions in question.js file
 // var questions = ...
+
 var score = 0;
 var currentQuestion = 0;
 var counter;
@@ -26,15 +27,15 @@ var finalScoreContainer = document.querySelector('#final-score')
 var initialInput = document.querySelector('#initials');
 
 
-function populateQuestion(question) {
-    var currentQuestion = question.title;
-    var choices = question.choices;
+function populateQuestion(questions) {
+    var currentQuestion = questions.title;
+    var choices = questions.choices;
 
     choicesContainer.innerHTML = '';
     questionsTitle.textContent = currentQuestion;
     var choicesList = document.createElement('ul');
     for (let i = 0; i < choices.length; i++) {
-        var choice = document.createElement('li');
+        var choice = document.createElement('button');
         choice.textContent = choices[i];
         choicesList.appendChild(choice);
     }
@@ -89,20 +90,20 @@ function saveHighscore(initial) {
 
 // Another click event listener for choices
 
-choicesContainer.addEventListener('click', function(event){            //click to select an answer, if answer if correct add one point if incorrect, timer goes down by 5 seconds
+choicesContainer.addEventListener('click', function(event){            
     var selectedAnswer = event.target.textContent;
+    //    Check answer
+    //        if correct, add 1 to score, call nextQuestion()
     if(selectedAnswer === questions[currentQuestion].answer){
         score += 1;
         nextQuestion();
+    //        if wrong, remove 10 seconds from the interval, call nextQuestion()
     }else{
         counter -= 10;
         nextQuestion();
     }
 })
 
-//    Check answer
-//        if correct, add 1 to score, call nextQuestion()
-//        if wrong, remove 10 seconds from the interval, call nextQuestion()
 
 // Click event listener to submit button
 //    var initial = initialInput.value.trim()
