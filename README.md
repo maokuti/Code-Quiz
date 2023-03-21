@@ -10,7 +10,7 @@ The following screenshots show how the webpage initially opens; how the question
 
 ![ScreenShot](/assets/images/InitalWebpage.png)
 ![ScreenShot](/assets/images/QuestionExample.png)
-![ScreenShot](/assets/Leaderboard.png)
+![ScreenShot](/assets/images/Leaderboard.png)
 
 ## Link to Deployed Application
 
